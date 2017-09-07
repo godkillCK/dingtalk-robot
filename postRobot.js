@@ -1,10 +1,18 @@
 const fetch = require('node-fetch');
 const schedule = require('node-schedule');
 
+function getDay() {
+    let iDays = parseInt(Math.abs(new Date().getTime() - new Date('2017-10-15').getTime()) / 1000 / 60 / 60 / 24);
+    if (iDays >= 16) {
+        iDays = iDays - 8;
+    }
+    return iDays;
+};
+
 const msg = {
     "markdown": {
         "title": "晨会提醒",
-        "text": "![screenshot](http://pic.qiantucdn.com/58pic/17/63/30/56d58PICEDh_1024.jpg)"
+        "text": "距离钉签作品提交截止还有：" + getDay() + "天"
     },
     "msgtype": "markdown",
     "at": {
